@@ -10,8 +10,20 @@
 
 <h1>hi</h1>
 
+<p><%= @found_ticket %></p>
+
+<p>Id <%= @found_ticket['id']%></p>
+<p>Subject:  <%= @found_ticket['subject']%></p>
+<p>Description: <%= @found_ticket['description']%></p>
+<p>Created_at: <%= @found_ticket['created_at']%></p>
+<p>Tags: <%= @found_ticket['tags'][0] %>, <%=@found_ticket['tags'][1] %>, <%=@found_ticket['tags'][1] %></p>
 
 
 
+
+
+
+
+<a href="/tickets" class="card-link">Home</a>
 </body>
 </html>

@@ -17,9 +17,7 @@
 <p>id = <%= ticket['id'] %></p>
 <p>Created at: <%= ticket['created_at'] %></p>
 <p>Descript:  <%= ticket['description'] %></p>
-<a href="/tickets/<%= ticket['id'] %>" class="card-link">
-            <%= ticket['id'] %>
-          </a>
+<a href="/tickets/<%= ticket['id'] %>" class="card-link"><%= ticket['id'] %></a>
 
 
 <p><% end %></p>
