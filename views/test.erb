@@ -13,7 +13,13 @@
 
 <h1>Hello </h1>
 
-<p><%= @data1 %></p>
+<p><% @data2.each do |ticket| %></p>
+<p>id = <%= ticket['id'] %></p>
+<p>Created at: <%= ticket['created_at'] %></p>
+<p>Descript:  <%= ticket['description'] %></p>
+
+
+<p><% end %></p>
 
 
 

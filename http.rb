@@ -8,8 +8,10 @@ get '/' do
   
   data = HTTP.basic_auth(:user => "robertdematteo@hotmail.com", :pass => "rob71ertd")
   .get(url).to_s
+  data1 = JSON.parse(data)
+  @data2 = data1['tickets']
 
-  @data1 = JSON.parse(data)
+
   
 
   
