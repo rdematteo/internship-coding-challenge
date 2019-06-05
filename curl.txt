@@ -1,0 +1,24 @@
+curl https://dematteo.zendesk.com/api/v2/imports/tickets/create_many.json -v -u robertdematteo@hotmail.com:rob71ertd -X POST -d @tickets.json -H "Content-Type: application/json"
+
+
+SHow job job_statuses
+curl https://dematteo.zendesk.com/api/v2/job_statuses/{id}.json \-v -u robertdematteo@hotmail.com:rob71ertd
+
+
+curl https://dematteo.zendesk.com/api/v2/search.json?query=type:ticket status:open \-v -u robertdematteo@hotmail.com:rob71ertd
+
+curl https://dematteo.zendesk.com/api/v2/search.json?query=1 status:open \-v -u robertdematteo@hotmail.com:rob71ertd
+
+curl https://dematteo.zendesk.com/api/v2/tickets.json \-v -u robertdematteo@hotmail.com:rob71ertd
+
+
+Authorization: Basic 
+encoded data
+Authorization: Basic cm9iZXJ0ZGVtYXR0ZW9AaG90bWFpbC5jb206cm9iNzFlcnRk
+
+https://dematteo.zendesk.com/api/v2/search.json?query=1 status:open \- u Authorization: Basic cm9iZXJ0ZGVtYXR0ZW9AaG90bWFpbC5jb206cm9iNzFlcnRk
+
+
+installed gem install zendesk_api
+
+curl https://dematteo.zendesk.com/api/v2/tickets.json \ -v -u robertdematteo@hotmail.com:rob71ertd
