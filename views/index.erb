@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Test</title>
+  <title>Index</title>
 </head>
 <body>
   
@@ -17,6 +17,9 @@
 <p>id = <%= ticket['id'] %></p>
 <p>Created at: <%= ticket['created_at'] %></p>
 <p>Descript:  <%= ticket['description'] %></p>
+<a href="/tickets/<%= ticket['id'] %>" class="card-link">
+            <%= ticket['id'] %>
+          </a>
 
 
 <p><% end %></p>
