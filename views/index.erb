@@ -5,25 +5,27 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Index</title>
+  <link rel="stylesheet" href="<%= url("/index.css")%>">
 </head>
 <body>
   
 
+<div class="container">
 
-
-<h1>Hello </h1>
-
-<p><% @data2.each do |ticket| %></p>
-<p>id = <%= ticket['id'] %></p>
-<p>Created at: <%= ticket['created_at'] %></p>
-<p>Descript:  <%= ticket['description'] %></p>
-<a href="/tickets/<%= ticket['id'] %>" class="card-link"><%= ticket['id'] %></a>
-
-
-<p><% end %></p>
-
-
-
+  <h1>Zendesk Ticket Viewer </h1>
+  <div class="wrapper">
+    <p><% @data2.each do |ticket| %></p>
+      <div class="ticket">
+        <p><strong>id</strong> = <%= ticket['id'] %></p>
+        <p><strong>Created at:</strong> <%= ticket['created_at'] %></p>
+        <p><strong>Description:</strong>  <%= ticket['description'] %></p>
+        <a href="/tickets/<%= ticket['id'] %>" class="card-link">Display ticket id-<%= ticket['id'] %>
+        </a>
+      </div>
+      <p><% end %></p>
+    
+  </div>
+</div>
 
 
 
