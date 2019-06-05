@@ -1,6 +1,7 @@
 require 'sinatra'
 require 'sinatra/json'
 require 'http'
+require 'dotenv'
 
 set :show_exceptions, :after_handler
 
