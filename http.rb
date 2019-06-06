@@ -2,14 +2,16 @@ require 'sinatra'
 require 'sinatra/json'
 require 'http'
 require 'dotenv'
+Dotenv.load
 
 set :show_exceptions, :after_handler
+
 
 
 def getTicket
   url = 'https://dematteo.zendesk.com/api/v2/tickets.json'
   begin
-    data = HTTP.basic_auth(:user => "robertdematteo@hotmail.com", :pass => "rob71ertd")
+    data = HTTP.basic_auth(:user => ENV["USERNAME"], :pass => ENV["PASSWORD"])
   .get(url).to_s
   return data1 = JSON.parse(data)
   rescue => exception
