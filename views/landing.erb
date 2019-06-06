@@ -1,26 +1,32 @@
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <link rel="stylesheet" type="text/css" href="<%= url("/landing.css")%>">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link rel="stylesheet" type="text/css" href="<%= url("/landing.css")%>">
 
-  <title>Document</title>
-</head>
-<body>
-  
-  <div class="container">
-    <div class="heading">
-      <h1>Welcome to my ticket viewer</h1>
-      <h2>To view tickets press on a desired range </h2>
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="container">
+      <div class="heading">
+        <h1>Welcome to my ticket viewer</h1>
+        <h2>To view tickets press on a desired range</h2>
+      </div>
+      <div class="tickets">
+        <button class="display-btn">
+          <a href="/tickets?page=1" class="ref">Display tickets 0-25</a>
+        </button>
+        <button class="display-btn">
+          <a href="/tickets?page=2" class="ref">Display tickets 26-50</a>
+        </button>
+        <button class="display-btn">
+          <a href="/tickets?page=3" class="ref">Display tickets 51-75</a>
+        </button>
+        <button class="display-btn">
+          <a href="/tickets?page=4" class="ref">Display tickets 76-100</a>
+        </button>
+      </div>
     </div>
-    <div class="tickets">
-      <button class="display-btn"><a href="/tickets?page=1" class="ref">Display tickets 0-25</a></button>
-      <button class="display-btn"><a href="/tickets?page=2" class="ref">Display tickets 26-50</a></button>
-      <button class="display-btn"><a href="/tickets?page=3" class="ref">Display tickets 51-75</a></button>
-      <button class="display-btn"><a href="/tickets?page=4" class="ref">Display tickets 76-100</a></button>
-    </div>
-  </div>
-
-</body>
+  </body>
 </html>

@@ -1,71 +1,62 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Index</title>
-  <link rel="stylesheet" type="text/css" href="<%= url("/index.css")%>">
-</head>
-<body>
-  
-
-<div class="container">
-
-  <h1>Zendesk API Ticket Viewer </h1>
-  <div class="buttons">
-  <button class="forward">Next page</button>
-  <button class="back">Previous page</button>
-  <button><a href="/" class="home">Home</a></button>
-  </div>
-  <% if @result.nil? %>
-  <p>No more tickets to display.</p>
-  <% elsif @result.empty?      %>
-  <p>There appears to be a problem connecting to the Zendesk API. </p>
-  <p>Please contact <a href="https://zendesk.com/">Zendesk</a>  if this issue continues. </p>
-  
-  <% else %>
-  <div class="wrapper">
-    <p><% @result.each do |ticket| %></p>
-      <div class="ticket">
-        <p><strong>Ticket id</strong> = <%= ticket['id'] %></p>
-        <p><strong>Created at:</strong> <%= ticket['created_at'] %></p>
-        <p><strong>Subject:</strong>  <%= ticket['subject'] %></p>
-        <a href="/tickets/<%= ticket['id'] %>" class="ref">Display ticket info
-        </a>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Index</title>
+    <link rel="stylesheet" type="text/css" href="<%= url("/index.css")%>">
+  </head>
+  <body>
+    <div class="container">
+      <h1>Zendesk API Ticket Viewer</h1>
+      <div class="buttons">
+        <button class="forward">Next page</button>
+        <button class="back">Previous page</button>
+        <button><a href="/" class="home">Home</a></button>
       </div>
-      <p><% end %></p>
-      <p><% end %></p>
-    
-  </div>
-</div>
+      <% if @result.nil? %>
+      <p>No more tickets to display.</p>
+      <% elsif @result.empty? %>
+      <p>There appears to be a problem connecting to the Zendesk API.</p>
+      <p>
+        Please contact <a href="https://support.zendesk.com/">Zendesk</a> if
+        this issue continues.
+      </p>
 
+      <% else %>
+      <div class="wrapper">
+        <p><% @result.each do |ticket| %></p>
+        <div class="ticket">
+          <p><strong>Ticket id</strong> = <%= ticket['id'] %></p>
+          <p><strong>Created at:</strong> <%= ticket['created_at'] %></p>
+          <p><strong>Subject:</strong> <%= ticket['subject'] %></p>
+          <a href="/tickets/<%= ticket['id'] %>" class="ref"
+            >Display ticket info
+          </a>
+        </div>
+        <p><% end %></p>
+        <p><% end %></p>
+      </div>
+    </div>
 
-
-<script>
-
-
-  const back = document.querySelector(".back")
-  const forward = document.querySelector(".forward")
-  const goForward = () => {
-    const params = window.location.search
-    const page = params.split("=")
-    const nextPage = Number(page[1]) + 1
-    window.location.href = `http://localhost:4567/tickets?page=${nextPage}`
-  }
-  const goBack = () => {
-    const params = window.location.search
-    const page = params.split("=")
-    const nextPage = Number(page[1]) - 1
-    window.location.href = `http://localhost:4567/tickets?page=${nextPage}`
-  }
-  forward.addEventListener('click', goForward)
-  back.addEventListener('click', goBack)
-  
- 
-
-</script>
-
-
-</body>
+    <script>
+      const back = document.querySelector(".back");
+      const forward = document.querySelector(".forward");
+      const goForward = () => {
+        const params = window.location.search;
+        const page = params.split("=");
+        const nextPage = Number(page[1]) + 1;
+        window.location.href = `http://localhost:4567/tickets?page=${nextPage}`;
+      };
+      const goBack = () => {
+        const params = window.location.search;
+        const page = params.split("=");
+        const nextPage = Number(page[1]) - 1;
+        window.location.href = `http://localhost:4567/tickets?page=${nextPage}`;
+      };
+      forward.addEventListener("click", goForward);
+      back.addEventListener("click", goBack);
+    </script>
+  </body>
 </html>

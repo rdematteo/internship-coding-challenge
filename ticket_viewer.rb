@@ -28,7 +28,7 @@ get '/tickets' do
   page = params["page"].to_i
   page = page - 1
   begin
-    if page == -1
+    if page <= -1
       redirect to '/tickets?page=1'
     end
     @result = []
