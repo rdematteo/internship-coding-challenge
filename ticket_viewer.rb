@@ -26,9 +26,10 @@ end
 
 get '/tickets' do
   page = params["page"].to_i
+  page = page - 1
   begin
     if page == -1
-      redirect to '/tickets?page=0'
+      redirect to '/tickets?page=1'
     end
     @result = []
     data1hash = getTicket()
@@ -59,12 +60,18 @@ get '/tickets/:id' do
     @found_ticket = data3.find {|ticket| id == ticket['id'] }
   rescue
     p 'api down, no internet'
-    redirect to '/tickets?page=0'
+    redirect to '/tickets?page=1'
   end 
   erb :show
 end
 
-get '/tickets' do
+get '/tickets/' do
+  page = params[-1]
+  
+  erb :oops
+end
+
+get '/ticket' do
   page = params[-1]
   
   erb :oops

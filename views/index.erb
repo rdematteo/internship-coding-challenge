@@ -12,7 +12,7 @@
 
 <div class="container">
 
-  <h1>Zendesk Ticket Viewer </h1>
+  <h1>Zendesk API Ticket Viewer </h1>
   <div class="buttons">
   <button class="forward">Next page</button>
   <button class="back">Previous page</button>
@@ -21,13 +21,14 @@
   <% if @result.nil? %>
   <p>No more tickets to display.</p>
   <% elsif @result.empty?      %>
-  <p>No connection to API. </p>
+  <p>There appears to be a problem connecting to the Zendesk API. </p>
+  <p>Please contact <a href="https://zendesk.com/">Zendesk</a>  if this issue continues. </p>
   
   <% else %>
   <div class="wrapper">
     <p><% @result.each do |ticket| %></p>
       <div class="ticket">
-        <p><strong>id</strong> = <%= ticket['id'] %></p>
+        <p><strong>Ticket id</strong> = <%= ticket['id'] %></p>
         <p><strong>Created at:</strong> <%= ticket['created_at'] %></p>
         <p><strong>Subject:</strong>  <%= ticket['subject'] %></p>
         <a href="/tickets/<%= ticket['id'] %>" class="ref">Display ticket info
