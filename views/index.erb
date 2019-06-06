@@ -13,10 +13,16 @@
 <div class="container">
 
   <h1>Zendesk Ticket Viewer </h1>
-
-  <% if @result.empty? %>
+  <div class="buttons">
+  <button class="forward">Next page</button>
+  <button class="back">Previous page</button>
+  <button><a href="/" class="home">Home</a></button>
+  </div>
+  <% if @result.nil? %>
+  <p>No more tickets to display.</p>
+  <% elsif @result.empty?      %>
+  <p>No connection to API. </p>
   
-  <p>Nothing to display</p>
   <% else %>
   <div class="wrapper">
     <p><% @result.each do |ticket| %></p>
@@ -32,13 +38,13 @@
     
   </div>
 </div>
-<button class="forward">Next page</button>
-<button class="back">Go back one page</button>
-<button><a href="/" class="card-link">Home</a></button>
+
 
 
 <script>
-const back = document.querySelector(".back")
+
+
+  const back = document.querySelector(".back")
   const forward = document.querySelector(".forward")
   const goForward = () => {
     const params = window.location.search
@@ -54,7 +60,8 @@ const back = document.querySelector(".back")
   }
   forward.addEventListener('click', goForward)
   back.addEventListener('click', goBack)
-
+  
+ 
 
 </script>
 

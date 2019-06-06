@@ -13,15 +13,10 @@ def getTicket
     data = HTTP.basic_auth(:user => ENV["USERNAME"], :pass => ENV["PASSWORD"])
   .get(url).to_s
   return data1 = JSON.parse(data)
- 
 rescue
   p 'api down, no internet'
-  
  end 
-  
 end
-
-
 
 get '/' do
 
@@ -30,19 +25,31 @@ end
 
 
 get '/tickets' do
-
-page = params["page"].to_i
-
-@result = []
-data1hash = getTicket()
-data2array = data1hash['tickets'] 
-data2array.each_slice(25) do |ticket|
-  @result << ticket
-end
-@result = @result[page]
+  page = params["page"].to_i
+  begin
+    if page == -1
+      redirect to '/tickets?page=0'
+    end
+    @result = []
+    data1hash = getTicket()
+    data2array = data1hash['tickets'] 
+    data2array.each_slice(25) do |ticket|
+      @result << ticket
+    end
+    @result = @result[page]
+  rescue
+   p 'no data being passed into array'
+  #  redirect to '/404'
+  end 
 
   erb :index
 end
+
+get '/404' do
+  403
+  erb :oops
+end
+
 
 get '/tickets/:id' do
   data1 = getTicket()
@@ -51,5 +58,11 @@ get '/tickets/:id' do
   @found_ticket = data3.find {|ticket| id == ticket['id'] }
 
   erb :show
+end
+
+get '/tickets' do
+  page = params[-1]
+  
+  erb :oops
 end
 
