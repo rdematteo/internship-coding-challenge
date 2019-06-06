@@ -3,28 +3,34 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" type="text/css" href="<%= url("/show.css")%>">
   
   <title>Individ Ticket</title>
 </head>
 <body>
   
+<div class="container">
+  
 
-<h1>hi</h1>
-
-<p><%= @found_ticket %></p>
-
-<p>Id <%= @found_ticket['id']%></p>
-<p>Subject:  <%= @found_ticket['subject']%></p>
-<p>Description: <%= @found_ticket['description']%></p>
-<p>Created_at: <%= @found_ticket['created_at']%></p>
-<p>Tags: <%= @found_ticket['tags'][0] %>, <%=@found_ticket['tags'][1] %>, <%=@found_ticket['tags'][1] %></p>
-
-
-
-
+  <div class="wrapper">
+    <div class="id">Id</div>
+    <p> <%= @found_ticket['id']%></p>
+    <div class="header">Subject:</div>
+    <p>  <%= @found_ticket['subject']%></p>
+    <div class="header">Description:</div>
+    <p> <%= @found_ticket['description']%></p>
+    <div class="header">Created_at: </div>
+    <p><%= @found_ticket['created_at']%></p>
+    <div class="header">Tags:</div>
+    <p> <%= @found_ticket['tags'][0] %>, <%=@found_ticket['tags'][1] %>, <%=@found_ticket['tags'][1] %></p>
 
 
+  </div>
+  <a href="/tickets?page=0" class="card-link">Home</a>
+  <p>
+	<a href="javascript:history.go(-1)" title="Return to the previous page">&laquo; Go back</a>
+</p>
+</div>
 
-<a href="/tickets" class="card-link">Home</a>
 </body>
 </html>

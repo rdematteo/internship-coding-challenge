@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Index</title>
-  <link rel="stylesheet" href="<%= url("/index.css")%>">
+  <link rel="stylesheet" type="text/css" href="<%= url("/index.css")%>">
 </head>
 <body>
   
@@ -13,22 +13,50 @@
 <div class="container">
 
   <h1>Zendesk Ticket Viewer </h1>
+
+  <% if @result.empty? %>
+  
+  <p>Nothing to display</p>
+  <% else %>
   <div class="wrapper">
-    <p><% @data2.each do |ticket| %></p>
+    <p><% @result.each do |ticket| %></p>
       <div class="ticket">
         <p><strong>id</strong> = <%= ticket['id'] %></p>
         <p><strong>Created at:</strong> <%= ticket['created_at'] %></p>
-        <p><strong>Description:</strong>  <%= ticket['description'] %></p>
+        <p><strong>Subject:</strong>  <%= ticket['subject'] %></p>
         <a href="/tickets/<%= ticket['id'] %>" class="card-link">Display ticket id-<%= ticket['id'] %>
         </a>
       </div>
       <p><% end %></p>
+      <p><% end %></p>
     
   </div>
 </div>
+<button class="forward">Next page</button>
+<button class="back">Go back one page</button>
+<button><a href="/" class="card-link">Home</a></button>
 
 
+<script>
+const back = document.querySelector(".back")
+  const forward = document.querySelector(".forward")
+  const goForward = () => {
+    const params = window.location.search
+    const page = params.split("=")
+    const nextPage = Number(page[1]) + 1
+    window.location.href = `http://localhost:4567/tickets?page=${nextPage}`
+  }
+  const goBack = () => {
+    const params = window.location.search
+    const page = params.split("=")
+    const nextPage = Number(page[1]) - 1
+    window.location.href = `http://localhost:4567/tickets?page=${nextPage}`
+  }
+  forward.addEventListener('click', goForward)
+  back.addEventListener('click', goBack)
 
+
+</script>
 
 
 </body>

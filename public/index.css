@@ -11,7 +11,7 @@
 }
 
 .wrapper {
-  max-width: 960px;
+  width: 100vw;
   height: 100%;
   display: flex;
   flex-wrap: wrap;
@@ -20,8 +20,8 @@
 }
 
 .ticket {
-  width: 30%;
-  height: 400px;
+  width: 18%;
+  height: auto;
   font-size: 12px;
   border: solid 2px black;
   margin: 5px;
