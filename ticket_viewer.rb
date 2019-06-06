@@ -52,11 +52,15 @@ end
 
 
 get '/tickets/:id' do
-  data1 = getTicket()
-  data3 = data1['tickets']
-  id = params['id'].to_i
-  @found_ticket = data3.find {|ticket| id == ticket['id'] }
-
+  begin
+    data1 = getTicket()
+    data3 = data1['tickets']
+    id = params['id'].to_i
+    @found_ticket = data3.find {|ticket| id == ticket['id'] }
+  rescue
+    p 'api down, no internet'
+    redirect to '/tickets?page=0'
+  end 
   erb :show
 end
 
