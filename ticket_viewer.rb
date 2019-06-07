@@ -6,16 +6,15 @@ Dotenv.load
 
 set :show_exceptions, :after_handler
 
-
 def getTicket
  begin
-   url = 'https://dematteo.zendesk.com/api/v2/tickets.json'
-    data = HTTP.basic_auth(:user => ENV["USERNAME"], :pass => ENV["PASSWORD"])
-  .get(url).to_s
-  return data1 = JSON.parse(data)
-rescue
-  p 'api down, no internet'
- end 
+    url = 'https://dematteo.zendesk.com/api/v2/tickets.json'
+      data = HTTP.basic_auth(:user => ENV["USERNAME"], :pass => ENV["PASSWORD"])
+    .get(url).to_s
+    return data1 = JSON.parse(data)
+  rescue
+    p 'api down, no internet'
+  end 
 end
 
 get '/' do
@@ -36,7 +35,7 @@ get '/tickets' do
     data2array = data1hash['tickets'] 
     data2array.each_slice(25) do |ticket|
       @result << ticket
-    end
+      end
     @result = @result[page]
   rescue
    p 'no data being passed into array'
@@ -45,12 +44,6 @@ get '/tickets' do
 
   erb :index
 end
-
-get '/404' do
-  403
-  erb :oops
-end
-
 
 get '/tickets/:id' do
   begin
@@ -62,18 +55,7 @@ get '/tickets/:id' do
     p 'api down, no internet'
     redirect to '/tickets?page=1'
   end 
+
   erb :show
-end
-
-get '/tickets/' do
-  page = params[-1]
-  
-  erb :oops
-end
-
-get '/ticket' do
-  page = params[-1]
-  
-  erb :oops
 end
 
