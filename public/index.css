@@ -37,15 +37,21 @@
 
 .forward,
 .back,
-.home {
+.home-btn {
   color: black;
   text-decoration: none;
   font-size: 14px;
+  margin: 5px 10px;
 }
 
 .forward:hover,
-.back:hover {
+.back:hover,
+.home-btn:hover {
   cursor: pointer;
+}
+#home {
+  text-decoration: none;
+  color: black;
 }
 
 .ref {

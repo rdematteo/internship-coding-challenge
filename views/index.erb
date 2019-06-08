@@ -13,10 +13,10 @@
       <div class="buttons">
         <button class="forward">Next page</button>
         <button class="back">Previous page</button>
-        <button><a href="/" class="home">Home</a></button>
+        <button class="home-btn"><a href="/" id="home">Home</a></button>
       </div>
       <% if @result.nil? %>
-      <p>No more tickets to display.</p>
+      <h3>No more tickets to display.</h3>
       <% elsif @result.empty? %>
       <p>There appears to be a problem connecting to the Zendesk API.</p>
       <p>
@@ -57,6 +57,10 @@
       };
       forward.addEventListener("click", goForward);
       back.addEventListener("click", goBack);
+
+      if (window.location.search == "?page=1"){
+      back.style.display = "none" }
+
     </script>
   </body>
 </html>

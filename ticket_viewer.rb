@@ -55,7 +55,19 @@ get '/tickets/:id' do
     p 'api down, no internet'
     redirect to '/tickets?page=1'
   end 
-
+  
   erb :show
 end
+
+get '/tickets/' do
+  
+  erb :oops
+end
+
+get '/ticket' do
+  
+  erb :oops
+end
+
+
 
