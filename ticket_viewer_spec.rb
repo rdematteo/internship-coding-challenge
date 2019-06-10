@@ -49,3 +49,35 @@ describe 'Redirect to page 1' do
 
 end
 
+
+
+describe 'json response' do
+  include Rack::Test::Methods
+   before do
+   get '/tickets'
+  end
+  it 'should be a json response' do
+    p last_response
+    expect(last_response.content_type).to eq('text/html;charset=utf-8')
+  end
+
+
+
+end
+
+
+
+
+describe 'run ticket function' do
+  it 'records method call' do
+    my_spy = spy
+    my_spy.getTicket
+    
+    expect(my_spy).to have_received(:getTicket).exactly(1).times
+    
+  end
+
+
+
+end
+

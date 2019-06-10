@@ -14,6 +14,7 @@ def getTicket
     return data1 = JSON.parse(data)
   rescue
     p 'api down, no internet'
+    
   end 
 end
 
@@ -52,7 +53,7 @@ get '/tickets/:id' do
     id = params['id'].to_i
     @found_ticket = data3.find {|ticket| id == ticket['id'] }
   rescue
-    p 'api down, no internet'
+    p 'status:302 - api down, no internet '
     redirect to '/tickets?page=1'
   end 
   
