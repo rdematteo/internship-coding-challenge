@@ -2,9 +2,9 @@
 ## Zendesk Ticket Viewer
 <hr>
 
-### Framework
+### 1.0 Framework
 Sinatra (2.0.5)
-### Dependencies
+### 2.0 Dependencies
 Ruby gems list includes
 - sinatra (2.0.5)
 - sinatra-contrib (2.0.5) - need this to run sinatra/json
@@ -17,7 +17,7 @@ For testing
 
 <hr>
 
-### Running the application
+### 3.0 Running the application
 Copy all files into a new directory.  
 From the command line type: ruby ticket_viewer.rb  
 The Sinatra server will start.  
@@ -25,12 +25,12 @@ In a new browser window type: localhost:4567 and enter.
 
 <hr>
 
-### Authentication details.
+### 4.0 Authentication details
 In the HTTP get request I have used dotenv to hide my authentication details. Throughout the majority of the challenge, I have placed the .env file in the .gitignore file. For the submission process I have removed the .env file from the .gitignore file, so you will be able to run the application. 
 
 <hr>
 
-### Landing page.
+### 5.0 Landing page
 http://localhost:4567/
 ![landing_page](https://user-images.githubusercontent.com/47741682/59166339-ea4a2500-8b6b-11e9-8a27-322173f77f27.png)
 
@@ -55,13 +55,13 @@ The landing page will open even when the API or the network connection is down.
 
 <hr>
 
-### Pagination
+### 6.0 Pagination
 There are several gems that handle pagination (kaminari, will_paginate, pagy; https://www.ruby-toolbox.com/categories/pagination ) but all these required class objects to be created, which was outside the scope of this application. Although Zendesk docs have information regarding pagination (https://developer.zendesk.com/rest_api/docs/support/introduction#pagination) I could not make interpret this information. Therefor, I implemented code for pagination.  
 It is hard coded to show 25 tickets per page but this can be changed to another integer.  The pagination is dynamic, thus if a smaller integer is inserted, the application will continue to display pages until the last ticket is displayed.  
 I decided to list tickets as cards rather than a traditional un/ordered list. It provides a simple, clear, view of all the tickets.
 ![page_1](https://user-images.githubusercontent.com/47741682/59167238-99d6c580-8b73-11e9-8559-7335f2a023b4.png)
 
-#### Pagination: error handling
+#### 6.1 Pagination: error handling
 - Pages < 1
 On page 1, the previous page button is hidden. In addition, if users were to type into url, a page number which is < 1 (i.e. http://localhost:4567/tickets?page=-4 ), the application will redirect to the first page.   
 - Pages > than last page.   
@@ -69,8 +69,8 @@ A message appears "No more tickets to display"
 
 <hr>
 
-#### Error handling
-##### API down on landing page
+### 7.0 Error handling
+#### 7.1 API down on landing page
 When the API or network connection is down, two errors messages are triggered.
 1. A message appears on the webpage.  
    Instead of redirecting to a 404 page, message is presented to the user  
@@ -82,16 +82,16 @@ When the API or network connection is down, two errors messages are triggered.
 
 **The user can always redirect to the homepage.**
 
-##### API down on page view
+#### 7.2 API down on page view
 The identical error message as in option 1 (above) will appear however a different message appears in the Sinatra logs, indicating a redirect(302).  
 
 <img width="612" alt="api_down_page" src="https://user-images.githubusercontent.com/47741682/59169601-4fa71180-8b7e-11e9-868c-a7e35a568ff1.png">
 
-##### See pagination:error handling section for error handling
+#### 7.3 See pagination:error handling section for error handling
 
 <hr>
 
-#### Testing
+### 8.0 Testing
 The hardest part of the challenge!  
 I had two choices; MiniTest or RSpec. I went with RSpec, as there were slightly more docs.  
 run: `rspec ticket_viewer_spec.rb` in parent directory.  
@@ -104,8 +104,8 @@ I tried to investigate the use of stub, mock and spies, however the online docum
 
 <hr>
 
-### Design process.
-All code was written with VS code to write.  
+### 9.0 Design process.
+All code was written with VS code.  
 To connect to the Zendesk API, my initial choice was to use axios over the native Fetch, due to the asynchronous functioning with axios. After many hours I had difficulty manipulating the returned object to work with it. I then discovered the Zendesk API gem and gave this a try. I was able to retrieve a collection from the API but was unable to manipulate the object. My next choice was to use HTTP and this worked very well. I was able to add username and password as basic authentication and I was able to parse the object into JSON to obtain a workable object. 
 
 My next choice was the framework. I had two choices, Ruby on Rails(RoR) or Sinatra. Although RoR is a powerful RESTful solution, implementing this challenge on Sinatra was the perfect solution for me as it is a lightweight Ruby web framework.  
