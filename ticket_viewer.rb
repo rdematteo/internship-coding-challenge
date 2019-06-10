@@ -23,7 +23,6 @@ get '/' do
   erb :landing
 end
 
-
 get '/tickets' do
   page = params["page"].to_i
   page = page - 1
