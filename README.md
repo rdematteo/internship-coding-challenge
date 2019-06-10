@@ -23,8 +23,12 @@ From the command line type: ruby ticket_viewer.rb
 The Sinatra server will start.  
 In a new browser window type: localhost:4567 and enter.  
 
+<hr>
+
 ### Authentication details.
 In the HTTP get request I have used dotenv to hide my authentication details. Throughout the majority of the challenge, I have placed the .env file in the .gitignore file. For the submission process I have removed the .env file from the .gitignore file, so you will be able to run the application. 
+
+<hr>
 
 ### Landing page.
 http://localhost:4567/
@@ -48,6 +52,9 @@ On each of these pages you have the option to display the next or previous 25 ti
 ```
 The landing page will open even when the API or the network connection is down.  
 ```
+
+<hr>
+
 ### Pagination
 There are several gems that handle pagination (kaminari, will_paginate, pagy; https://www.ruby-toolbox.com/categories/pagination ) but all these required class objects to be created, which was outside the scope of this application. Although Zendesk docs have information regarding pagination (https://developer.zendesk.com/rest_api/docs/support/introduction#pagination) I could not make interpret this information. Therefor, I implemented code for pagination.  
 It is hard coded to show 25 tickets per page but this can be changed to another integer.  The pagination is dynamic, thus if a smaller integer is inserted, the application will continue to display pages until the last ticket is displayed.  
@@ -60,8 +67,33 @@ On page 1, the previous page button is hidden. In addition, if users were to typ
 - Pages > than last page.   
 A message appears "No more tickets to display"
 
+<hr>
+
+#### Error handling
+##### API down on landing page
+When the API or network connection is down, two errors messages are triggered.
+1. A message appears on the webpage.  
+   Instead of redirecting to a 404 page, message is presented to the user  
+
+   ![error_message](https://user-images.githubusercontent.com/47741682/59168812-c17d5c00-8b7a-11e9-9cf8-76c1b6c5d84d.png)
+
+2. A message appears on the Sinatra server logs  
+   <img width="600" alt="api_down_landing" src="https://user-images.githubusercontent.com/47741682/59168851-f25d9100-8b7a-11e9-9521-57185b87065d.png">  
+
+**The user can always redirect to the homepage.**
+
+##### API down on page view
+The identical error message as in option 1 (above) will appear however a different message appears in the Sinatra logs, indicating a redirect(302).
+<img width="612" alt="api_down_page" src="https://user-images.githubusercontent.com/47741682/59169601-4fa71180-8b7e-11e9-868c-a7e35a568ff1.png">
+
+##### See pagination:error handling section for error handling
+
+<hr>
+
+#### Testing
 
 
+<hr>
 
 ### Design process.
 All code was written with VS code to write.  

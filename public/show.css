@@ -15,11 +15,12 @@ p {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  margin: 0 auto;
 }
 
 .wrapper {
   width: 60%;
-  height: 140px;
+  height: auto;
   border: solid black 2px;
   border-radius: 10px;
   background: white;
