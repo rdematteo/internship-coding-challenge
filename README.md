@@ -83,7 +83,8 @@ When the API or network connection is down, two errors messages are triggered.
 **The user can always redirect to the homepage.**
 
 ##### API down on page view
-The identical error message as in option 1 (above) will appear however a different message appears in the Sinatra logs, indicating a redirect(302).
+The identical error message as in option 1 (above) will appear however a different message appears in the Sinatra logs, indicating a redirect(302).  
+
 <img width="612" alt="api_down_page" src="https://user-images.githubusercontent.com/47741682/59169601-4fa71180-8b7e-11e9-868c-a7e35a568ff1.png">
 
 ##### See pagination:error handling section for error handling
@@ -91,7 +92,15 @@ The identical error message as in option 1 (above) will appear however a differe
 <hr>
 
 #### Testing
+The hardest part of the challenge!  
+I had two choices; MiniTest or RSpec. I went with RSpec, as there were slightly more docs.  
+run: `rspec ticket_viewer_spec.rb` in parent directory.  
+I have provided some basic tests to determine if 
+- a connection to the API exists when loading pages
+- routing path tests
+- test on pagination error handling  
 
+I tried to investigate the use of stub, mock and spies, however the online documents did not adequately explain the process of implementing.
 
 <hr>
 
