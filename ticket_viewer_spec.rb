@@ -12,13 +12,11 @@ describe 'Load Home Page' do
 
   it "Starting app should load the landing page" do 
     get '/'
-
     expect(last_response).to be_ok
   end
 
   it "Landing page should include" do 
     get '/'
-
     expect(last_response.body).to include("Welcome to my ticket viewer")
   end
 end
@@ -26,7 +24,7 @@ end
 describe 'Load ticket Page' do
   include Rack::Test::Methods
 
-  it "Clicking on first page should load the first 25 tickets page" do 
+  it "Clicking on first page should load page 1" do 
     get '/tickets?page=1'
     expect(last_response.status).to eq 200
   end
@@ -41,43 +39,22 @@ end
 describe 'Redirect to page 1' do
   include Rack::Test::Methods
 
-  it "displays page 1 when user selects previous page on page 1" do 
+  it "redirects to page 1 when url params =  page = -1" do 
     get '/tickets', :page => -1
-
     expect(last_request.path).to eq('/tickets')
   end
 
 end
 
 
-
-describe 'json response' do
-  include Rack::Test::Methods
-   before do
-   get '/tickets'
-  end
-  it 'should be a json response' do
-    p last_response
-    expect(last_response.content_type).to eq('text/html;charset=utf-8')
-  end
-
-
-
-end
-
-
-
-
 describe 'run ticket function' do
   it 'records method call' do
     my_spy = spy
-    my_spy.getTicket
-    
+    my_spy.getTicket()
+ 
     expect(my_spy).to have_received(:getTicket).exactly(1).times
-    
+
   end
-
-
 
 end
 
