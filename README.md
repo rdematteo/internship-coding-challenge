@@ -62,7 +62,9 @@ The landing page will open even when the API or the network connection is down.
 There are several gems that handle pagination (kaminari, will_paginate, pagy; https://www.ruby-toolbox.com/categories/pagination ) but all these required class objects to be created, which was outside the scope of this application. Although Zendesk docs have information regarding pagination (https://developer.zendesk.com/rest_api/docs/support/introduction#pagination) I could not make interpret this information. Therefor, I implemented code for pagination.  
 It is hard coded to show 25 tickets per page but this can be changed to another integer.  The pagination is dynamic, thus if a smaller integer is inserted, the application will continue to display pages until the last ticket is displayed.  
 I decided to list tickets as cards rather than a traditional un/ordered list. It provides a simple, clear, view of all the tickets.
-![page_1](https://user-images.githubusercontent.com/47741682/59167238-99d6c580-8b73-11e9-8559-7335f2a023b4.png)
+![page_1](https://user-images.githubusercontent.com/47741682/59167238-99d6c580-8b73-11e9-8559-7335f2a023b4.png)  
+
+This approach may run into issues when there are more than 100 tickets in the account.
 
 #### 6.1 Pagination: error handling
 - Pages < 1
